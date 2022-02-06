@@ -1,0 +1,39 @@
+/* #content{
+width: 795px;
+height: 942px;
+}*/
+/* 
+table, th , td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #ffffff;
+  } */
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  
+  #t01 {
+    width: 100%;    
+    background-color: #c1ccf1;
+  }
+
+  .pad {
+    padding-left: 10px;
+     padding-right: 10px;
+    
+   }
+   
+   .full {
+      width: 100%; 
+     }
+     

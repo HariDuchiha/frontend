@@ -1,0 +1,189 @@
+<form class="row g-3 needs-validation" novalidate style="margin-bottom: 10%; margin-top:3%" (submit)="getReport(reportDetailsForm)" #reportDetailsForm="ngForm">
+  
+    
+    
+    <br>
+          <h2 style="background-color: rgb(0, 0, 0); padding: 1%; text-align: center; color: rgb(255, 255, 255);">Generate Report</h2>
+          
+      <div class="col-md-6">
+  
+        <label for="date" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="date" value="" required name="startDate" ngModel>
+        <!-- <div class="valid-feedback">
+          Looks good!
+        </div> -->
+      </div>
+      <div class="col-md-6">
+        <label for="date" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="date" value="" required name="endDate" ngModel>
+        <!-- <div class="valid-feedback">
+          Looks good!
+        </div> -->
+      </div>
+     
+      
+      <button  class="w-15 btn btn-lg btn-primary" type="submit" style=" margin-bottom: 2%;"  >
+          Proceed
+        </button>
+  
+  </form>
+
+  <!-- View Report -->
+
+  <div >
+    <div class="row" style="margin-top: 0px;">
+      <!-- <div class="col-lg-10">
+        
+        <h1 style="text-align:center" > 
+            REPORT
+        </h1> <br>
+     </div> -->
+    <!-- <div class="col-lg-2 ml-auto">
+      <button class="w-15 btn btn-lg btn-primary d-flex justify-content-between" type="submit" >Download</button>
+    </div> -->
+    <!-- <div class="col-lg-2 ml-auto">
+      <button class="w-15 btn btn-lg btn-primary d-flex justify-content-between" type="submit" >Find Report</button>
+    </div> -->
+  <!-- </div>
+      <table class="table" *ngIf="list.length"> 
+        
+          <thead> 
+           
+            <tr>
+              <th scope="col">REPORT ID</th>
+              <th scope="col">TRANSACTION ID</th>
+              <th scope="col">SENDER NAME</th>
+              <th scope="col">RECEIPIENT NAME</th>
+              <th scope="col">RECEIPIENT ACCOUNT</th>
+              <th scope="col">EXCHANGE</th>
+              <th scope="col">TO</th>
+              <th scope="col">FEE</th>
+              <th scope="col">AMT</th>
+              <th scope="col">TYPE</th>
+              <th scope="col">CREATED DATE</th>
+              <th scope="col">START DATE</th>
+              <th scope="col">END DATE</th>
+            </tr>
+          </thead>
+          <tbody> -->
+            <!-- <p>{{list}}</p> -->
+           
+             <!-- <tr *ngFor="let report of reportObj?.reportDetailsList">
+              
+             <td>
+                {{report?.reportId}}
+              </td> 
+              <div *ngFor="let trans of report.transaction">
+              <tr>    
+                <td>
+                  {{trans?.transactionId}}
+                </td>
+                <td>
+                  {{ trans?.senderName }}
+                </td>
+                <td>
+                  {{  trans?.receipientName }}
+                </td>
+                <td>
+                  {{  trans?.receipientAcc }}
+                </td>
+                <td>
+                  {{  trans?.exchangeFrom }}
+                </td>
+                <td>
+                  {{  trans?.exchangeTo }}
+                </td>
+                <td>
+                  {{  trans?.transactionFee }}
+                </td>
+                <td>
+                  {{ trans?.amount }}
+                </td>
+              </tr>
+              </div>
+              <td>
+                  {{ report?.reportType }}
+                </td>
+                <td>
+                  {{ report?.createdDate }}
+                </td>
+                <td>
+                  {{ report?.startDate }}
+                </td>
+                <td>
+                  {{ report?.endDate }}
+                 </td>  
+          </tbody>
+        </table>
+
+  </div> 
+   -->
+
+
+
+   
+   <table class = "table" id="htmlData">
+    <thead > 
+     
+      <tr>
+        <th scope="col">REPORT ID</th>
+        <th scope="col">TRANSACTION ID</th>
+        <th scope="col">SENDER ID</th>
+        <th scope="col">RECEIPIENT NAME</th>
+        <th scope="col">RECEIPIENT ACCOUNT</th>
+        <th scope="col">EXCHANGE</th>
+        <th scope="col">TO</th>
+        <th scope="col">AMT</th>
+        <th scope="col">STATUS</th>
+        <th scope="col">TYPE</th>
+        <th scope="col">CREATED DATE</th>
+        <th scope="col" >START DATE</th>
+        <th scope="col">END DATE</th>
+      </tr>
+    </thead>
+
+    <ng-template
+      #rowTemplateOutlet
+      let-index="index"
+      let-reportDetailsList="reportDetailsList"
+      let-transaction="transaction"
+    >
+      <tr>
+        <td [attr.rowspan]="reportDetailsList.transaction.length" *ngIf="index == 0">
+          {{ reportDetailsList.reportId }}
+        </td>
+        <td style="width: 19%; text-align:center;">{{ transaction.transactionId }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.userId }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.recipientName }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.recipientAccountNo }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.currencyExchangeFrom  }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.currencyExchangeTo  }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.amountTransferred  }}</td>
+        <td style="width: 19%; text-align:center;">{{ transaction.transactionStatus  }}</td>
+        <td [attr.rowspan]="reportDetailsList.transaction.length" *ngIf="index == 0">
+          {{ reportDetailsList.reportType }}
+        </td>
+        <td [attr.rowspan]="reportDetailsList.transaction.length" *ngIf="index == 0">
+          {{ reportDetailsList.createdDate}}
+        </td>
+        <td [attr.rowspan]="reportDetailsList.transaction.length" *ngIf="index == 0">
+          {{ reportDetailsList.startDate }}
+        </td>
+        <td [attr.rowspan]="reportDetailsList.transaction.length" *ngIf="index == 0">
+          {{ reportDetailsList.endDate }}
+        </td>
+      </tr>
+    </ng-template>
+  
+    <ng-container *ngFor="let reportDetailsList of reportObj?.reportDetailsList">
+      <ng-container *ngFor="let transaction of reportDetailsList.transaction; let i = index">
+        <ng-container
+          *ngTemplateOutlet="
+            rowTemplateOutlet;
+            context: { reportDetailsList: reportDetailsList, transaction: transaction, index: i }
+          "
+        >
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </table>
